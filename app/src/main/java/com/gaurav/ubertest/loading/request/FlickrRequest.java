@@ -23,6 +23,9 @@ public class FlickrRequest extends Request<Bitmap> {
     super(url, Priority.NORMAL, callback, handler);
   }
 
+  /**
+   * Method that makes the http connection and initiates a download
+   */
   @Override public void download() {
     try {
       URL urlConn = new URL(this.url);
@@ -34,6 +37,11 @@ public class FlickrRequest extends Request<Bitmap> {
     }
   }
 
+  /**
+   * Decodes the recieved stream from the connection.
+   *
+   * @param stream the stream obtained from url connection
+   */
   @Override public void decode(InputStream stream) {
     BufferedInputStream bufferedInputStream = new BufferedInputStream(stream);
     final Bitmap bmp = BitmapFactory.decodeStream(bufferedInputStream);

@@ -37,6 +37,13 @@ public class DataDownloader extends Downloader<JSONObject> {
     return instance;
   }
 
+  /**
+   * Method to intitiate the loading of a data resource.
+   *
+   * @param url the url to  be loaded
+   * @param source source of the data
+   * @param targetCallback callback to return the data in
+   */
   public void loadData(
       @NonNull final String url,
       @NonNull final RequestCreator.Source source,

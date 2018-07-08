@@ -47,7 +47,11 @@ public class ImageDownloader extends Downloader<Bitmap> {
 		return instance;
 	}
 
-	public void loadImage(ImageView imageView,String url){
+	/**
+	 * Method that sets up the in-memory cache, and submits request to the ExecutorService for
+	 * execution. Throws callback to the request maker via a Request.Callback that goes to Request.
+	 */
+	public void loadImage(ImageView imageView, String url) {
 
 		WeakReference<ImageView> target = new WeakReference<>(imageView);
 		String oldUrl = imageViewCache.put(target,url);
@@ -79,7 +83,14 @@ public class ImageDownloader extends Downloader<Bitmap> {
     submit(createRequest(url, RequestCreator.Source.FLICKR, callback));
   }
 
-  public Request<Bitmap> createRequest(
+	/**
+	 *
+	 * @param url
+	 * @param source
+	 * @param targetCallback
+	 * @return Request<T> object as needed  by the class
+	 */
+	public Request<Bitmap> createRequest(
       @NonNull String url,
 			@NonNull RequestCreator.Source source,
 			Request.Callback<Bitmap> targetCallback) {
@@ -90,6 +101,12 @@ public class ImageDownloader extends Downloader<Bitmap> {
     );
   }
 
+	/**
+	 * Once an downloadcallbak is recieved, set sthe image into an in memory cache.
+	 * If the imageView ref is still available, set image on the bitmap.
+	 * @param url
+	 * @param bitmap
+	 */
 	private void cacheAndSetBitmap(String url,Bitmap bitmap){
 		bitmapCache.put(url,new WeakReference<Bitmap>(bitmap));
 		WeakReference<ImageView> target = urlImageViewMap.get(url);

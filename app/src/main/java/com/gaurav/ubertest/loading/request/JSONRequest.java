@@ -24,6 +24,9 @@ public class JSONRequest extends Request {
     super(url, priority, dataCallback, handler);
   }
 
+  /**
+   * Method that makes the http connection and initiates a download
+   */
   @Override public void download() {
     try {
       URL urlConn = new URL(this.url);
@@ -36,6 +39,11 @@ public class JSONRequest extends Request {
     }
   }
 
+  /**
+   * Decodes the recieved stream from the connection.
+   *
+   * @param inputStream the stream obtained from url connection
+   */
   @Override public void decode(final InputStream inputStream) {
     try {
       BufferedReader

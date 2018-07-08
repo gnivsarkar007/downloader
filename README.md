@@ -19,6 +19,8 @@ Client objects construct query specifications declaratively and submit them to R
 Objects can be added to and removed from the Repository, as they can from a simple collection of objects, and the 
 mapping code encapsulated by the Repository will carry out the appropriate operations behind the scenes.
 
+
+
 Possible improvements:
 - Better error handling.
 - A file cache for the images rather than a memory cache as it is currently.

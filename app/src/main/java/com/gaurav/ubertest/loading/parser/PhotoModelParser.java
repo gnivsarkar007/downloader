@@ -26,6 +26,10 @@ public class PhotoModelParser implements Parser<List<PhotoModel>> {
     this.rootObject = rootObject;
   }
 
+  /**
+   * @return List<Photomodels> parsed and ready to use
+   */
+
   public final List<PhotoModel> parse() {
     List<PhotoModel> modelList = new ArrayList<>();
     try {
