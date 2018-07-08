@@ -1,5 +1,6 @@
 # downloader
 Resource downloader.
+APK included.
 
 A image-data downloading project for android. Uses a simple in-memory cache to donload and cache images. 
 Also capable of downloading, parsing json data.
